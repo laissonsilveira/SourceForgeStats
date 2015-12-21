@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	<title>SourceForge Stats</title>
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="../js/statscontroller.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/sfstats.css">
+</head>
+<body class="popup">
+	<div class="container" ng-app="SFStatsApp" ng-controller="StatsController">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>SourceForge Stats by Laisson</h3>
+			</div>
+			<div class="panel-body">
+				<div>
+					<form>
+						<div class="form-group">
+							<label>Project</label>
+							<input type="text" class="form-control" ng-model="filter.name_project" placeholder="Ex: passbrow-recover" required>
+						</div>
+						<div class="form-group">
+							<label>Start Date</label>
+							<input type="date" class="form-control" ng-model="filter.start_date" required>
+						</div>
+						<div class="form-group">
+							<label>End Date</label>
+							<input type="date" class="form-control" ng-model="filter.end_date" required>
+						</div>
+						<button class="btn btn-primary btn-sm" ng-click="findStats(filter)">Find Stats</button>
+					</form>
+					<hr>
+					<div ng-show="stats.error" class="text-center">
+						<h5>{{stats.error}}</h5>
+					</div>
+					<div ng-hide="stats.error">
+						<h3>Downloads: {{stats.total}} <button class="btn btn-default btn-sm pull-right">Details</button></h3>
+					</div>
+				</div>
+			</div>	
+        </div>
+	</div>
+</body>
+</html>
