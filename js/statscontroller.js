@@ -6,7 +6,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
     $scope.containsInfo = false;
     $scope.showSpinner = false;
     $scope.filter = {
-        name_project: '',
+        name_project: 'passbrow-recover',
         start_date: new Date(),
         end_date: new Date()
     };
@@ -49,7 +49,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
         var opts = {
             lines: 13, length: 20, width: 10, radius: 30, corners: 1, rotate: 0,
             direction: 1, color: '#000', speed: 1, trail: 60, shadow: false, hwaccel: false,
-            className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto', scale: 0.3
+            className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto', scale: 0.2
         };
         new Spinner(opts).spin($('#spinner')[0]);
     }
