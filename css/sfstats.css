@@ -27,3 +27,8 @@ body {
     height: 30px;
     text-align: center;
 }
+
+.spinner {
+    left: 50% !important;
+    top: 87% !important;
+}

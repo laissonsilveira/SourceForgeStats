@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../js/angular.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/spin.js"></script>
     <script type="text/javascript" src="../js/statscontroller.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/sfstats.css">
@@ -24,14 +25,14 @@
     <div class="panel panel-primary">
         <div class="panel-body">
             <div id="filter" class="collapse in">
-                <div class="form-group">
+                <div class="form-group name-project">
                     <label>Project</label>
-                    <input type="text" class="form-control" ng-model="filter.name_project"
-                           placeholder="Ex: passbrow-recover" required>
+                    <input id="name-project" type="text" class="form-control" ng-model="filter.name_project"
+                           placeholder="Ex: passbrow-recover">
                 </div>
                 <div class="form-group">
                     <label>Start Date</label>
-                    <input type="date" class="form-control" ng-model="filter.start_date" required>
+                    <input type="date" class="form-control" ng-model="filter.start_date">
                     <!--<datalist id="dates">-->
                     <!--<option label="Groundhog Day">2014-02-02</option>-->
                     <!--<option label="Valentine's Day">2014-02-14</option>-->
@@ -40,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label>End Date</label>
-                    <input type="date" class="form-control" ng-model="filter.end_date" required>
+                    <input type="date" class="form-control" ng-model="filter.end_date">
                 </div>
                 <button class="btn btn-primary btn-sm" ng-click="findStats(filter)">Find Stats</button>
                 <hr>
@@ -49,7 +50,7 @@
                 <label>{{stats.error}}</label>
             </div>
             <div ng-hide="stats.error">
-                <h3>Downloads: {{stats.total}}
+                <h3>Downloads: {{stats.total}}<span id="spinner" ng-show="showSpinner"></span>
                     <button class="btn btn-info btn-sm pull-right" ng-click="showDetails=true" ng-show="!showDetails"
                             ng-disabled="!containsInfo" data-toggle="collapse" data-target="#filter">Details
                     </button>
