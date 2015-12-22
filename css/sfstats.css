@@ -1,7 +1,10 @@
 @CHARSET "ISO-8859-1";
 
+body {
+    padding-top: 60px !important;
+}
+
 .popup {
-    padding-top: 15px !important;
     width: 400px;
     max-height: 570px;
 }
@@ -12,4 +15,15 @@
 
 .tab-sfs {
     width: 111.3px;
+}
+
+.navbar-title {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.nav-pills a {
+    padding: 5px 5px !important;
+    height: 30px;
+    text-align: center;
 }
