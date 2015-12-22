@@ -15,7 +15,7 @@
 <div class="container" ng-app="SFStatsApp" ng-controller="StatsController">
     <div class="panel panel-primary">
         <div class="panel-heading text-center">
-            <h4>SourceForge Stats by Laisson</h4>
+            <h4>SourceForge Stats by Technova.com.br</h4>
         </div>
         <div class="panel-body">
             <div id="filter" class="collapse in">
@@ -41,7 +41,7 @@
                 <hr>
             </div>
             <div ng-show="stats.error" class="text-center">
-                <h5>{{stats.error}}</h5>
+                <label>{{stats.error}}</label>
             </div>
             <div ng-hide="stats.error">
                 <h3>Downloads: {{stats.total}}
@@ -54,16 +54,84 @@
                 </h3>
                 <div ng-show="showDetails">
                     <ul class="nav nav-pills">
-                        <li class="active"><a data-toggle="tab" href="#tab1">OS</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Country</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Top</a></li>
+                        <li class="active tab-sfs"><a data-toggle="tab" href="#tab1">OS</a></li>
+                        <li class="tab-sfs"><a data-toggle="tab" href="#tab2">Country</a></li>
+                        <li class="tab-sfs"><a data-toggle="tab" href="#tab3">Top</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
+                            <div class="content-tab-sfs">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td>
+                                            <label>Operational System</label>
+                                        </td>
+                                        <td align="center">
+                                            <label>Downloads</label>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="os in stats.oses">
+                                            <td>
+                                                {{os[0]}}
+                                            </td>
+                                            <td align="center">
+                                                {{os[1]}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab2">
+                            <div class="content-tab-sfs">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td>
+                                            <label>Countries</label>
+                                        </td>
+                                        <td align="center">
+                                            <label>Downloads</label>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="country in stats.countries">
+                                            <td>
+                                                {{country[0]}}
+                                            </td>
+                                            <td align="center">
+                                                {{country[1]}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab3">
+                            <div class="content-tab-sfs">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <label>TOP COUNTRY</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{stats.summaries.geo.top}}</h3>
+                                        <h6>{{stats.summaries.geo.percent}}% of downloaders</h6>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <label>TOP OS</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{stats.summaries.os.top}}</h3>
+                                        <h6>{{stats.summaries.os.percent}}% of downloaders</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -2,5 +2,14 @@
 
 .popup {
     padding-top: 15px !important;
-    width: 500px;
+    width: 400px;
+    max-height: 570px;
+}
+
+.content-tab-sfs {
+    padding-top: 10px;
+}
+
+.tab-sfs {
+    width: 111.3px;
 }
