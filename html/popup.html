@@ -31,18 +31,20 @@
                 </div>
                 <div class="form-group start-date">
                     <label></label>
-                    <input type="date" class="form-control" ng-model="filter.start_date">
-                    <!--<datalist id="dates">-->
-                    <!--<option label="Groundhog Day">2014-02-02</option>-->
-                    <!--<option label="Valentine's Day">2014-02-14</option>-->
-                    <!--<option label="Flag Day">2014-06-14</option>-->
-                    <!--</datalist>-->
+                    <input type="date" class="form-control" ng-model="filter.start_date" list="dates">
+                    <datalist id="dates">
+                        <option id="today" label="Today"></option>
+                        <option id="seven_days" label="Last 7 days"></option>
+                        <option id="month" label="Month to date"></option>
+                        <option id="year" label="Year to date"></option>
+                        <option id="previous_month" label="The previous Month"></option>
+                    </datalist>
                 </div>
                 <div class="form-group end-date">
                     <label></label>
                     <input type="date" class="form-control" ng-model="filter.end_date">
                 </div>
-                <button class="btn btn-primary btn-sm" ng-click="findStats(filter)"></button>
+                <button class="btn btn-primary btn-sm btn-block" ng-click="findStats(filter)"></button>
                 <hr>
             </div>
             <div ng-show="error" class="text-center">

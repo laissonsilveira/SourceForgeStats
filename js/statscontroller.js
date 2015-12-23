@@ -2,6 +2,7 @@ var myapp = angular.module('SFStatsApp', []);
 myapp.controller('StatsController', function ($scope, $http, $filter) {
 
     setLabel();
+    setListDates();
     $scope.stats = null;
     $scope.error = null;
     $scope.showDatails = false;
@@ -119,4 +120,28 @@ function setLabel() {
     $('#btn_tab1').text(chrome.i18n.getMessage('btn_top_i18n'));
     $('#btn_tab2').text(chrome.i18n.getMessage('btn_os_i18n'));
     $('#btn_tab3').text(chrome.i18n.getMessage('btn_country_i18n'));
+}
+
+function setListDates() {
+    var today = new Date();
+    $('#today').val(convertDate(today));
+    
+    var sevenDays = new Date();
+    sevenDays.setDate(today.getDate() - 7);
+    $('#seven_days').val(convertDate(sevenDays));
+    
+    var month = new Date(today.getFullYear(), today.getMonth(), 1);
+    $('#month').val(convertDate(month));
+    
+    var year = new Date(today.getFullYear(), 0, 1);
+    $('#year').val(convertDate(year));
+    
+    var previousMonth = new Date();
+    previousMonth.setMonth(today.getMonth() - 1);
+    $('#previous_month').val(convertDate(previousMonth));
+}
+
+function convertDate(d) {
+  function pad(s) { return (s < 10) ? '0' + s : s; }
+  return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
 }
