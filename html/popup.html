@@ -65,6 +65,28 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
+                             <div class="content-tab-sfs">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <label id="top_os"></label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{stats.summaries.os.top}}</h3>
+                                        <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <label id="top_country"></label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{stats.summaries.geo.top}}</h3>
+                                        <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab2">
                             <div class="content-tab-sfs">
                                 <table class="table table-hover">
                                     <thead>
@@ -73,7 +95,7 @@
                                             <label id="operational_system"></label>
                                         </td>
                                         <td align="center">
-                                            <label class="countries"></label>
+                                            <label class="downloads"></label>
                                         </td>
                                     </tr>
                                     </thead>
@@ -90,7 +112,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab2">
+                        <div class="tab-pane" id="tab3">
                             <div class="content-tab-sfs">
                                 <table class="table table-hover">
                                     <thead>
@@ -114,28 +136,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab3">
-                            <div class="content-tab-sfs">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <label id="top_country"></label>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h3>{{stats.summaries.geo.top}}</h3>
-                                        <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <label id="top_os"></label>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h3>{{stats.summaries.os.top}}</h3>
-                                        <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

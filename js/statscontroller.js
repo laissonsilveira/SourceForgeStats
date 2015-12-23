@@ -116,7 +116,7 @@ function setLabel() {
     $('#filter button').text(chrome.i18n.getMessage('btn_find_stats_i18n'));
     $('#btn_details').text(chrome.i18n.getMessage('btn_details_i18n'));
     $('#btn_new_filter').text(chrome.i18n.getMessage('btn_new_filter_i18n'));
-    $('#btn_tab1').text(chrome.i18n.getMessage('btn_os_i18n'));
-    $('#btn_tab2').text(chrome.i18n.getMessage('btn_country_i18n'));
-    $('#btn_tab3').text(chrome.i18n.getMessage('btn_top_i18n'));
+    $('#btn_tab1').text(chrome.i18n.getMessage('btn_top_i18n'));
+    $('#btn_tab2').text(chrome.i18n.getMessage('btn_os_i18n'));
+    $('#btn_tab3').text(chrome.i18n.getMessage('btn_country_i18n'));
 }
