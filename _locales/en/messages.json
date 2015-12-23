@@ -1,5 +1,65 @@
 {
-	"app_title_i18n": {
-		"message": "SourceForge Stats"
+	"txt_project_name_i18n": {
+		"message": "Project"
+	},
+	"txt_placeholder_project_name_i18n": {
+		"message": "Project Name..."
+	},
+	"txt_start_date_i18n": {
+		"message": "Start Date"
+	},
+	"txt_end_date_i18n": {
+		"message": "End Date"
+	},
+	"txt_download_i18n": {
+		"message": "Downloads"
+	},
+	"txt_operational_system_i18n": {
+		"message": "Operational System"
+	},
+	"txt_countries_i18n": {
+		"message": "Countries"
+	},
+	"txt_top_country_i18n": {
+		"message": "TOP COUNTRY"
+	},
+	"txt_top_os_i18n": {
+		"message": "TOP OS"
+	},
+	"txt_percent_download_i18n": {
+		"message": "% of downloaders"
+	},
+	"btn_find_stats_i18n": {
+		"message": "Find Stats"
+	},
+	"btn_details_i18n": {
+		"message": "Details"
+	},
+	"btn_new_filter_i18n": {
+		"message": "New Filter"
+	},
+	"btn_os_i18n": {
+		"message": "OS"
+	},
+	"btn_country_i18n": {
+		"message": "Country"
+	},
+	"btn_top_i18n": {
+		"message": "Top"
+	},
+	"msg_error_load_json_i18n": {
+		"message": "ERROR: Could not load stats of Source Forge, verify your connection or your Project Name!"
+	},
+	"msg_required_project_name_i18n": {
+		"message": "Project Name is required!"
+	},
+	"msg_required_start_date_i18n": {
+		"message": "Start Date is required!"
+	},
+	"msg_required_end_date_i18n": {
+		"message": "End Date is required!"
+	},
+	"msg_start_greater_end_i18n": {
+		"message": "Start Date can not be greater than the End Date!"
 	}
 }

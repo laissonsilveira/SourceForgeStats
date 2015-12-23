@@ -16,7 +16,7 @@
 <nav class="navbar navbar-default text-center navbar-fixed-top label-primary">
     <div class="container">
         <div class="navbar-header">
-            <h3 class="navbar-title"><span class="label">SourceForge Stats</span></h3>
+            <h3 class="navbar-title"><span class="label">SourceForge Stats<span class="label" id="version"></span></span></h3>
             <h5 class="navbar-title"><span class="label">Technova.com.br - ©2015 - Laisson R. Silveira</span></h5>
         </div>
     </div>
@@ -26,12 +26,11 @@
         <div class="panel-body">
             <div id="filter" class="collapse in">
                 <div class="form-group name-project">
-                    <label>Project</label>
-                    <input id="name-project" type="text" class="form-control" ng-model="filter.name_project"
-                           placeholder="Ex: passbrow-recover">
+                    <label></label>
+                    <input type="text" class="form-control" ng-model="filter.name_project">
                 </div>
-                <div class="form-group">
-                    <label>Start Date</label>
+                <div class="form-group start-date">
+                    <label></label>
                     <input type="date" class="form-control" ng-model="filter.start_date">
                     <!--<datalist id="dates">-->
                     <!--<option label="Groundhog Day">2014-02-02</option>-->
@@ -39,30 +38,30 @@
                     <!--<option label="Flag Day">2014-06-14</option>-->
                     <!--</datalist>-->
                 </div>
-                <div class="form-group">
-                    <label>End Date</label>
+                <div class="form-group end-date">
+                    <label></label>
                     <input type="date" class="form-control" ng-model="filter.end_date">
                 </div>
-                <button class="btn btn-primary btn-sm" ng-click="findStats(filter)">Find Stats</button>
+                <button class="btn btn-primary btn-sm" ng-click="findStats(filter)"></button>
                 <hr>
             </div>
-            <div ng-show="stats.error" class="text-center">
-                <label>{{stats.error}}</label>
+            <div ng-show="error" class="text-center">
+                <label class="text-danger">{{error.msg}}</label>
             </div>
-            <div ng-hide="stats.error">
-                <h3>Downloads: {{stats.total}}<span id="spinner" ng-show="showSpinner"></span>
-                    <button class="btn btn-info btn-sm pull-right" ng-click="showDetails=true" ng-show="!showDetails"
-                            ng-disabled="!containsInfo" data-toggle="collapse" data-target="#filter">Details
+            <div ng-hide="error">
+                <h3><span class="downloads"></span> : {{stats.total}}<span id="spinner" ng-show="showSpinner"></span>
+                    <button id="btn_details" class="btn btn-info btn-sm pull-right" ng-click="showDetails=true" ng-show="!showDetails"
+                            ng-disabled="!containsInfo || stats.total == 0" data-toggle="collapse" data-target="#filter">
                     </button>
-                    <button class="btn btn-success btn-sm pull-right" ng-click="showDetails=false" ng-show="showDetails"
-                            data-toggle="collapse" data-target="#filter">New Filter
+                    <button id="btn_new_filter" class="btn btn-success btn-sm pull-right" ng-click="showDetails=false" ng-show="showDetails"
+                            data-toggle="collapse" data-target="#filter">
                     </button>
                 </h3>
                 <div ng-show="showDetails">
                     <ul class="nav nav-pills">
-                        <li class="active tab-sfs"><a data-toggle="tab" href="#tab1">OS</a></li>
-                        <li class="tab-sfs"><a data-toggle="tab" href="#tab2">Country</a></li>
-                        <li class="tab-sfs"><a data-toggle="tab" href="#tab3">Top</a></li>
+                        <li class="active tab-sfs"><a data-toggle="tab" href="#tab1" id="btn_tab1"></a></li>
+                        <li class="tab-sfs"><a data-toggle="tab" href="#tab2" id="btn_tab2"></a></li>
+                        <li class="tab-sfs"><a data-toggle="tab" href="#tab3" id="btn_tab3"></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
@@ -71,10 +70,10 @@
                                     <thead>
                                     <tr>
                                         <td>
-                                            <label>Operational System</label>
+                                            <label id="operational_system"></label>
                                         </td>
                                         <td align="center">
-                                            <label>Downloads</label>
+                                            <label class="countries"></label>
                                         </td>
                                     </tr>
                                     </thead>
@@ -97,10 +96,10 @@
                                     <thead>
                                     <tr>
                                         <td>
-                                            <label>Countries</label>
+                                            <label class="countries"></label>
                                         </td>
                                         <td align="center">
-                                            <label>Downloads</label>
+                                            <label class="downloads"></label>
                                         </td>
                                     </tr>
                                     </thead>
@@ -121,20 +120,20 @@
                             <div class="content-tab-sfs">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <label>TOP COUNTRY</label>
+                                        <label id="top_country"></label>
                                     </div>
                                     <div class="panel-body">
                                         <h3>{{stats.summaries.geo.top}}</h3>
-                                        <h6>{{stats.summaries.geo.percent}}% of downloaders</h6>
+                                        <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <label>TOP OS</label>
+                                        <label id="top_os"></label>
                                     </div>
                                     <div class="panel-body">
                                         <h3>{{stats.summaries.os.top}}</h3>
-                                        <h6>{{stats.summaries.os.percent}}% of downloaders</h6>
+                                        <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
                                     </div>
                                 </div>
                             </div>
