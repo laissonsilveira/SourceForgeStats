@@ -19,6 +19,8 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
 
         if (!validate()) return;
 
+        $('.collapse').collapse('hide');
+
         var link_json = 'http://sourceforge.net/projects/' + filter.name_project + '/files/stats/json?start_date='
             + $filter('date')(filter.start_date, 'yyyy-MM-dd') + '&end_date=' + $filter('date')(filter.end_date, 'yyyy-MM-dd');
 
@@ -27,23 +29,23 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
         $scope.showSpinner = true;
 
         $http.get(link_json).success(function (data) {
+            loadChart(data);
             $scope.showSpinner = false;
             $scope.stats = data;
             $scope.containsInfo = true;
             $scope.showChartDownloads = true;
             localStorage["name_project"] = $scope.filter.name_project;
-            loadChart(data);
         }).error(function (data, status, error, config) {
             $scope.showSpinner = false;
             $scope.error = {
                 msg: chrome.i18n.getMessage('msg_error_load_json_i18n')
             };
+            $('.collapse').collapse('show');
         });
     };
 
     function validate() {
         $scope.error = null;
-
 
         if ($scope.filter.end_date == null) {
             $('.end-date').addClass('has-error has-feedback');
@@ -117,7 +119,7 @@ function setLabel() {
     $('#top_country').text(chrome.i18n.getMessage('txt_top_country_i18n'));
     $('#top_os').text(chrome.i18n.getMessage('txt_top_os_i18n'));
     $('.percent').text(chrome.i18n.getMessage('txt_percent_download_i18n'));
-    $('#filter button').text(chrome.i18n.getMessage('btn_find_stats_i18n'));
+    $('#btn_find').text(chrome.i18n.getMessage('btn_find_stats_i18n'));
     $('#btn_details').text(chrome.i18n.getMessage('btn_details_i18n'));
     $('#btn_new_filter').text(chrome.i18n.getMessage('btn_new_filter_i18n'));
     $('#btn_tab1').text(chrome.i18n.getMessage('btn_top_i18n'));
@@ -150,7 +152,7 @@ function convertDate(d) {
 }
 
 function loadChart(stats) {
-    var dateChart = ['x'], downloadsChart = ['Downloads/Days'];
+    var dateChart = ['x'], downloadsChart = [chrome.i18n.getMessage('txt_legend_chart_i18n')];
 
     for (var i = 0; i < stats.downloads.length; i++) {
         var dateLegend = new Date(stats.downloads[i][0]);
@@ -180,8 +182,8 @@ function loadChart(stats) {
     var chartTopOS = c3.generate({
         bindto: '#chartTopOS',
         size: {
-            width: 150,
-            height: 150
+            width: 180,
+            height: 180
         },
         data: {
             columns: stats.oses,
@@ -195,8 +197,8 @@ function loadChart(stats) {
     var chartTopCountry = c3.generate({
         bindto: '#chartTopCountry',
         size: {
-            width: 150,
-            height: 150
+            width: 180,
+            height: 180
         },
         data: {
             columns: stats.countries,

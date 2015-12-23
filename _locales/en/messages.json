@@ -29,6 +29,9 @@
 	"txt_percent_download_i18n": {
 		"message": "% of downloaders"
 	},
+	"txt_legend_chart_i18n": {
+		"message": "Downloads/Days"
+	},
 	"btn_find_stats_i18n": {
 		"message": "Find Stats"
 	},
