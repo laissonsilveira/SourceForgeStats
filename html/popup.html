@@ -8,9 +8,12 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript" src="../js/spin.js"></script>
+    <script type="text/javascript" src="../js/c3.js"></script>
+    <script type="text/javascript" src="../js/d3.js"></script>
     <script type="text/javascript" src="../js/statscontroller.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/sfstats.css">
+    <link rel="stylesheet" type="text/css" href="../css/c3.css">
 </head>
 <body class="popup">
 <nav class="navbar navbar-default text-center navbar-fixed-top label-primary">
@@ -44,7 +47,7 @@
                     <label></label>
                     <input type="date" class="form-control" ng-model="filter.end_date">
                 </div>
-                <button class="btn btn-primary btn-sm btn-block" ng-click="findStats(filter)"></button>
+                <button class="btn btn-primary btn-sm btn-block" ng-click="findStats(filter)" data-toggle="collapse" data-target="#filter"></button>
                 <hr>
             </div>
             <div ng-show="error" class="text-center">
@@ -52,13 +55,14 @@
             </div>
             <div ng-hide="error">
                 <h3><span class="downloads"></span> : {{stats.total}}<span id="spinner" ng-show="showSpinner"></span>
-                    <button id="btn_details" class="btn btn-info btn-sm pull-right" ng-click="showDetails=true" ng-show="!showDetails"
-                            ng-disabled="!containsInfo || stats.total == 0" data-toggle="collapse" data-target="#filter">
+                    <button id="btn_details" class="btn btn-info btn-sm pull-right" ng-click="showDetails=true;showChartDownloads=false" ng-hide="showDetails"
+                            ng-disabled="!containsInfo || stats.total == 0">
                     </button>
-                    <button id="btn_new_filter" class="btn btn-success btn-sm pull-right" ng-click="showDetails=false" ng-show="showDetails"
+                    <button id="btn_new_filter" class="btn btn-success btn-sm pull-right" ng-click="showDetails=false;showChartDownloads=false" ng-show="showDetails || showChartDownloads"
                             data-toggle="collapse" data-target="#filter">
                     </button>
                 </h3>
+                <div ng-show="showChartDownloads" id="chartDownloads"></div>
                 <div ng-show="showDetails">
                     <ul class="nav nav-pills">
                         <li class="active tab-sfs"><a data-toggle="tab" href="#tab1" id="btn_tab1"></a></li>
@@ -73,8 +77,11 @@
                                         <label id="top_os"></label>
                                     </div>
                                     <div class="panel-body">
-                                        <h3>{{stats.summaries.os.top}}</h3>
-                                        <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
+                                        <div class="pull-left">
+                                            <h3>{{stats.summaries.os.top}}</h3>
+                                            <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
+                                        </div>
+                                        <div id="chartTopOS" class="pull-right"></div>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
@@ -82,8 +89,11 @@
                                         <label id="top_country"></label>
                                     </div>
                                     <div class="panel-body">
-                                        <h3>{{stats.summaries.geo.top}}</h3>
-                                        <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
+                                        <div class="pull-left">
+                                            <h3>{{stats.summaries.geo.top}}</h3>
+                                            <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
+                                        </div>
+                                        <div id="chartTopCountry" class="pull-right"></div>
                                     </div>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@ body {
 }
 
 .popup {
-    width: 400px;
+    width: 500px;
     max-height: 570px;
 }
 
@@ -26,9 +26,4 @@ body {
     padding: 5px 5px !important;
     height: 30px;
     text-align: center;
-}
-
-.spinner {
-    left: 46% !important;
-    top: 87% !important;
 }

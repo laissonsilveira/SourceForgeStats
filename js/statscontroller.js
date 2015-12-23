@@ -8,6 +8,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
     $scope.showDatails = false;
     $scope.containsInfo = false;
     $scope.showSpinner = false;
+    $scope.showChartDownloads = false;
     $scope.filter = {
         name_project: localStorage["name_project"],
         start_date: new Date(),
@@ -29,7 +30,9 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             $scope.showSpinner = false;
             $scope.stats = data;
             $scope.containsInfo = true;
+            $scope.showChartDownloads = true;
             localStorage["name_project"] = $scope.filter.name_project;
+            loadChart(data);
         }).error(function (data, status, error, config) {
             $scope.showSpinner = false;
             $scope.error = {
@@ -97,7 +100,7 @@ function createSpinner() {
     var opts = {
         lines: 13, length: 20, width: 10, radius: 30, corners: 1, rotate: 0,
         direction: 1, color: '#000', speed: 1, trail: 60, shadow: false, hwaccel: false,
-        className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto', scale: 0.2
+        className: 'spinner', zIndex: 2e9, top: '65%', left: '40%', scale: 0.2
     };
     new Spinner(opts).spin($('#spinner')[0]);
 }
@@ -142,6 +145,65 @@ function setListDates() {
 }
 
 function convertDate(d) {
-  function pad(s) { return (s < 10) ? '0' + s : s; }
-  return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
+    function normalize(s) { return (s < 10) ? '0' + s : s; }
+    return [d.getFullYear(), normalize(d.getMonth() + 1), normalize(d.getDate())].join('-');
+}
+
+function loadChart(stats) {
+    var dateChart = ['x'], downloadsChart = ['Downloads/Days'];
+
+    for (var i = 0; i < stats.downloads.length; i++) {
+        var dateLegend = new Date(stats.downloads[i][0]);
+        dateChart.push(convertDate(dateLegend));
+        downloadsChart.push(stats.downloads[i][1]);
+    }
+    
+    var chartDownloads = c3.generate({
+        bindto: '#chartDownloads',
+        data: {
+            x: 'x',
+            columns: [
+                dateChart,
+                downloadsChart
+            ]
+        },
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%Y-%m-%d'
+                }
+            }
+        }
+    });
+
+    var chartTopOS = c3.generate({
+        bindto: '#chartTopOS',
+        size: {
+            width: 150,
+            height: 150
+        },
+        data: {
+            columns: stats.oses,
+            type : 'pie'
+        },
+        legend: {
+            hide: true
+        }
+    });
+
+    var chartTopCountry = c3.generate({
+        bindto: '#chartTopCountry',
+        size: {
+            width: 150,
+            height: 150
+        },
+        data: {
+            columns: stats.countries,
+            type : 'pie'
+        },
+        legend: {
+            hide: true
+        }
+    });
 }
