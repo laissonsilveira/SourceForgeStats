@@ -17,7 +17,9 @@
 </head>
 <body class="popup">
 <nav class="navbar navbar-default text-center navbar-fixed-top label-primary">
-    <img class="logo-header" src="../images/sfs_logo.png" alt="Source Forge Stats">
+    <a href="http://www.technova.com.br" target="_blank">
+        <img class="logo-header" src="../images/sfs_logo.png" alt="Source Forge Stats">
+    </a>
     <a href="https://github.com/laissonsilveira/SourceForgeStats" target="_blank">
         <img class="fork-github" src="../images/github.png" alt="Fork me on GitHub">
     </a>
@@ -32,7 +34,7 @@
 <div class="container" ng-app="SFStatsApp" ng-controller="StatsController">
     <div class="panel panel-primary">
         <div class="panel-body">
-            <div id="filter" class="collapse in">
+            <div ng-show="showForm">
                 <div class="form-group name-project">
                     <label></label>
                     <input type="text" class="form-control" ng-model="filter.name_project">
@@ -52,7 +54,7 @@
                     <label></label>
                     <input type="date" class="form-control" ng-model="filter.end_date">
                 </div>
-                <button id="btn_find" class="btn btn-primary btn-sm btn-block" ng-click="findStats(filter)"></button>
+                <button id="btn_find" class="btn btn-primary btn-sm btn-block" ng-click="validateForm()"></button>
                 <hr>
             </div>
             <div ng-show="error" class="text-center">
@@ -66,8 +68,7 @@
                                 ng-disabled="!containsInfo || stats.total == 0">
                         </button>
                         <button id="btn_new_filter" class="btn btn-success btn-sm"
-                                ng-click="showDetails=false;showChartDownloads=false;containsInfo=false" ng-show="showDetails || showChartDownloads"
-                                data-toggle="collapse" data-target="#filter">
+                                ng-click="showDetails=false;showChartDownloads=false;containsInfo=false;showForm=true;" ng-show="showDetails || showChartDownloads">
                         </button>
                     </div>
                 </h3>

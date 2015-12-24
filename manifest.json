@@ -2,7 +2,7 @@
   "name": "SourceForge Stats",
   "short_name": "SourceForge Stats",
   "default_locale": "en",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "minimum_chrome_version": "4",
   "icons": {

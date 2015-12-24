@@ -2,49 +2,17 @@ var myapp = angular.module('SFStatsApp', []);
 myapp.controller('StatsController', function ($scope, $http, $filter) {
 
     setLabel();
-    setListDates();
-    $scope.stats = null;
-    $scope.error = null;
-    $scope.showDatails = false;
-    $scope.containsInfo = false;
-    $scope.showSpinner = false;
-    $scope.showChartDownloads = false;
+    setListDates();    
+    setDefaultValues();
+    
     $scope.filter = {
         name_project: localStorage["name_project"],
         start_date: new Date(),
         end_date: new Date()
     };
 
-    $scope.findStats = function (filter) {
+    $scope.validateForm = function () {
 
-        if (!validate()) return;
-
-        $('.collapse').collapse('hide');
-
-        var link_json = 'http://sourceforge.net/projects/' + filter.name_project + '/files/stats/json?start_date='
-            + $filter('date')(filter.start_date, 'yyyy-MM-dd') + '&end_date=' + $filter('date')(filter.end_date, 'yyyy-MM-dd');
-
-        $scope.stats = null;
-        createSpinner();
-        $scope.showSpinner = true;
-
-        $http.get(link_json).success(function (data) {
-            loadChart(data);
-            $scope.showSpinner = false;
-            $scope.stats = data;
-            $scope.containsInfo = true;
-            $scope.showChartDownloads = true;
-            localStorage["name_project"] = $scope.filter.name_project;
-        }).error(function (data, status, error, config) {
-            $scope.showSpinner = false;
-            $scope.error = {
-                msg: chrome.i18n.getMessage('msg_error_load_json_i18n')
-            };
-            $('.collapse').collapse('show');
-        });
-    };
-
-    function validate() {
         $scope.error = null;
 
         if ($scope.filter.end_date == null) {
@@ -83,18 +51,53 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
                 $scope.error = {
                     msg: chrome.i18n.getMessage('msg_start_greater_end_i18n')
                 };
+            } else {
+               findStats();
             }
         }
+    };
 
-        return $scope.error == null;
-    }
+    function findStats() {
+
+        var link_json = 'http://sourceforge.net/projects/' + $scope.filter.name_project + '/files/stats/json?start_date='
+            + $filter('date')($scope.filter.start_date, 'yyyy-MM-dd') + '&end_date=' + $filter('date')($scope.filter.end_date, 'yyyy-MM-dd');
+
+        setDefaultValues();
+        createSpinner();
+        $scope.showSpinner = true;
+        
+        $http.get(link_json).success(function (data) {
+            loadChart(data);
+            $scope.showSpinner = false;
+            $scope.stats = data;
+            $scope.containsInfo = true;
+            $scope.showChartDownloads = true;
+            $scope.showForm = false;
+            localStorage["name_project"] = $scope.filter.name_project;
+        }).error(function (data, status, error, config) {
+            $scope.showSpinner = false;
+            setDefaultValues();
+            $scope.error = {
+                msg: chrome.i18n.getMessage('msg_error_load_json_i18n')
+            };
+        });
+    };
+
+    function setDefaultValues() {
+        $scope.stats = null;
+        $scope.error = null;
+        $scope.containsInfo = false;
+        $scope.showChartDownloads = false;
+        $scope.showDatails = false;
+        $scope.showForm = true;
+    };
 
     function dateDiffInDays(a, b) {
         var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
         var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
         return Math.floor((utc2 - utc1) / ( 1000 * 60 * 60 * 24));
-    }
+    };
 
 });
 
@@ -102,7 +105,7 @@ function createSpinner() {
     var opts = {
         lines: 13, length: 20, width: 10, radius: 30, corners: 1, rotate: 0,
         direction: 1, color: '#000', speed: 1, trail: 60, shadow: false, hwaccel: false,
-        className: 'spinner', zIndex: 2e9, top: '65%', left: '40%', scale: 0.2
+        className: 'spinner', zIndex: 2e9, top: '87%', left: '36%', scale: 0.2
     };
     new Spinner(opts).spin($('#spinner')[0]);
 }
