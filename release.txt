@@ -1,0 +1,26 @@
+Version 1.2 (25 Dez 2015)
+    - Changed sampling of y-axis to only integers
+
+Version 1.1 (24 Dez 2015)
+	- Error fixed: form hiding when some error happens in finding the statistics
+
+Version 1.0 (23 Dez 2015)
+	- Initial Project
+
+--------------------------
+
+Essa extensão é para você que tem preguiça de ir até o site do SouceForge para ver como anda as estatísticas do seu aplicativo. É simples! Clique no sobre o ícone da extensão e na popup que vai se abrir, digite o nome do seu projeto e escolha um filtro de data, se tudo der certo, em seguida será lhe apresentado as estatísticas de download do seu projeto, e na próxima vez não será necessário digitar novamente o nome do projeto, somente se quiser verificar outro.
+
+A extensão não requer nenhuma permissão adicional. 
+
+Foi usado AngularJS para bind das informações, Bootstrap/jQuery para layout e c3/d3 JS para exibição dos gráficos. O código está aberto (OpenSource) e pode ser acessado aqui (https://github.com/laissonsilveira/SourceForgeStats).
+
+--------------------------
+
+This extension is for you too lazy to go to the SouceForge's website to see how is the statistics of your application. It's simple! Click on the extent icon and pop that will open, enter the name of your project and choose a date filter, if all goes well, then will be presented you the download statistics of your project, and the next time you do not need to re-enter the project name, only if you want to check another. 
+
+The extension does not require any additional permission. 
+
+Angularjs was used to bind the information, Bootstrap / jQuery to layout and c3 / d3 JS for displaying graphics. 
+
+The code is open (open source) and can be accessed here (https://github.com/laissonsilveira/SourceForgeStats).

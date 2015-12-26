@@ -178,6 +178,11 @@ function loadChart(stats) {
                 tick: {
                     format: '%Y-%m-%d'
                 }
+            },
+            y: {
+                tick: {
+                    format: d3.format('d')
+                }
             }
         }
     });

@@ -1,0 +1,365 @@
+{
+  "oses": [
+    [
+      "Windows",
+      72
+    ],
+    [
+      "Linux",
+      7
+    ],
+    [
+      "Unknown",
+      6
+    ],
+    [
+      "Macintosh",
+      6
+    ]
+  ],
+  "end_date": "2015-12-21 00:00:00",
+  "countries": [
+    [
+      "United States",
+      26
+    ],
+    [
+      "Brazil",
+      17
+    ],
+    [
+      "India",
+      9
+    ],
+    [
+      "Ireland",
+      4
+    ],
+    [
+      "Korea",
+      3
+    ],
+    [
+      "Jordan",
+      3
+    ],
+    [
+      "Germany",
+      3
+    ],
+    [
+      "Libya",
+      3
+    ],
+    [
+      "Russia",
+      3
+    ],
+    [
+      "Thailand",
+      2
+    ],
+    [
+      "Ukraine",
+      2
+    ],
+    [
+      "Sweden",
+      2
+    ],
+    [
+      "United Kingdom",
+      2
+    ],
+    [
+      "Turkey",
+      1
+    ],
+    [
+      "Italy",
+      1
+    ],
+    [
+      "Serbia",
+      1
+    ],
+    [
+      "France",
+      1
+    ],
+    [
+      "Algeria",
+      1
+    ],
+    [
+      "Puerto Rico",
+      1
+    ],
+    [
+      "Georgia",
+      1
+    ],
+    [
+      "Philippines",
+      1
+    ],
+    [
+      "Indonesia",
+      1
+    ],
+    [
+      "Portugal",
+      1
+    ],
+    [
+      "Tunisia",
+      1
+    ],
+    [
+      "Sri Lanka",
+      1
+    ]
+  ],
+  "oses_with_downloads": [
+    "Linux",
+    "Macintosh",
+    "Unknown",
+    "Windows"
+  ],
+  "downloads": [
+    [
+      "2015-11-20 00:00:00",
+      0
+    ],
+    [
+      "2015-11-21 00:00:00",
+      0
+    ],
+    [
+      "2015-11-22 00:00:00",
+      0
+    ],
+    [
+      "2015-11-23 00:00:00",
+      0
+    ],
+    [
+      "2015-11-24 00:00:00",
+      1
+    ],
+    [
+      "2015-11-25 00:00:00",
+      2
+    ],
+    [
+      "2015-11-26 00:00:00",
+      2
+    ],
+    [
+      "2015-11-27 00:00:00",
+      0
+    ],
+    [
+      "2015-11-28 00:00:00",
+      1
+    ],
+    [
+      "2015-11-29 00:00:00",
+      7
+    ],
+    [
+      "2015-11-30 00:00:00",
+      13
+    ],
+    [
+      "2015-12-01 00:00:00",
+      13
+    ],
+    [
+      "2015-12-02 00:00:00",
+      3
+    ],
+    [
+      "2015-12-03 00:00:00",
+      8
+    ],
+    [
+      "2015-12-04 00:00:00",
+      3
+    ],
+    [
+      "2015-12-05 00:00:00",
+      3
+    ],
+    [
+      "2015-12-06 00:00:00",
+      1
+    ],
+    [
+      "2015-12-07 00:00:00",
+      9
+    ],
+    [
+      "2015-12-08 00:00:00",
+      2
+    ],
+    [
+      "2015-12-09 00:00:00",
+      3
+    ],
+    [
+      "2015-12-10 00:00:00",
+      0
+    ],
+    [
+      "2015-12-11 00:00:00",
+      0
+    ],
+    [
+      "2015-12-12 00:00:00",
+      7
+    ],
+    [
+      "2015-12-13 00:00:00",
+      3
+    ],
+    [
+      "2015-12-14 00:00:00",
+      0
+    ],
+    [
+      "2015-12-15 00:00:00",
+      4
+    ],
+    [
+      "2015-12-16 00:00:00",
+      1
+    ],
+    [
+      "2015-12-17 00:00:00",
+      1
+    ],
+    [
+      "2015-12-18 00:00:00",
+      0
+    ],
+    [
+      "2015-12-19 00:00:00",
+      2
+    ],
+    [
+      "2015-12-20 00:00:00",
+      0
+    ],
+    [
+      "2015-12-21 00:00:00",
+      2
+    ]
+  ],
+  "messages": [
+    "Download statistics available since 2015-11-20 (when this project was registered)."
+  ],
+  "period": "daily",
+  "start_date": "2015-11-20 00:00:00",
+  "oses_by_country": {
+    "Brazil": {
+      "Windows": 12,
+      "Macintosh": 2,
+      "Linux": 3
+    },
+    "Turkey": {
+      "Windows": 1
+    },
+    "Italy": {
+      "Windows": 1
+    },
+    "Serbia": {
+      "Windows": 1
+    },
+    "France": {
+      "Windows": 1
+    },
+    "Ireland": {
+      "Unknown": 4
+    },
+    "Korea": {
+      "Windows": 3
+    },
+    "Algeria": {
+      "Windows": 1
+    },
+    "Jordan": {
+      "Windows": 3
+    },
+    "Puerto Rico": {
+      "Windows": 1
+    },
+    "Thailand": {
+      "Windows": 2
+    },
+    "Germany": {
+      "Windows": 1,
+      "Unknown": 1,
+      "Linux": 1
+    },
+    "Ukraine": {
+      "Windows": 2
+    },
+    "Georgia": {
+      "Windows": 1
+    },
+    "Libya": {
+      "Windows": 3
+    },
+    "Philippines": {
+      "Windows": 1
+    },
+    "Indonesia": {
+      "Windows": 1
+    },
+    "United States": {
+      "Windows": 18,
+      "Unknown": 1,
+      "Macintosh": 4,
+      "Linux": 3
+    },
+    "Sweden": {
+      "Windows": 2
+    },
+    "Russia": {
+      "Windows": 3
+    },
+    "Portugal": {
+      "Windows": 1
+    },
+    "Tunisia": {
+      "Windows": 1
+    },
+    "India": {
+      "Windows": 9
+    },
+    "United Kingdom": {
+      "Windows": 2
+    },
+    "Sri Lanka": {
+      "Windows": 1
+    }
+  },
+  "total": 91,
+  "stats_updated": "2015-12-21 21:01:08",
+  "summaries": {
+    "os": {
+      "top": "Windows",
+      "percent": 79,
+      "modifier_text": ""
+    },
+    "geo": {
+      "top": "United States",
+      "percent": 28,
+      "modifier_text": ""
+    },
+    "time": {
+      "downloads": 91
+    }
+  }
+}
