@@ -117,7 +117,7 @@ function setLabel() {
     $('.start-date label').text(chrome.i18n.getMessage('txt_start_date_i18n'));
     $('.end-date label').text(chrome.i18n.getMessage('txt_end_date_i18n'));
     $('.downloads').text(chrome.i18n.getMessage('txt_download_i18n'));
-    $('#operational_system').text(chrome.i18n.getMessage('txt_operational_system_i18n'));
+    $('.operational_system').text(chrome.i18n.getMessage('txt_operational_system_i18n'));
     $('.countries').text(chrome.i18n.getMessage('txt_countries_i18n'));
     $('#top_country').text(chrome.i18n.getMessage('txt_top_country_i18n'));
     $('#top_os').text(chrome.i18n.getMessage('txt_top_os_i18n'));
@@ -128,6 +128,7 @@ function setLabel() {
     $('#btn_tab1').text(chrome.i18n.getMessage('btn_top_i18n'));
     $('#btn_tab2').text(chrome.i18n.getMessage('btn_os_i18n'));
     $('#btn_tab3').text(chrome.i18n.getMessage('btn_country_i18n'));
+    $('#btn_tab4').text(chrome.i18n.getMessage('btn_os_by_country_i18n'));
 }
 
 function setListDates() {

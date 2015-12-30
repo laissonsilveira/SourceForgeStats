@@ -78,6 +78,7 @@
                         <li class="active tab-sfs"><a data-toggle="tab" href="#tab1" id="btn_tab1"></a></li>
                         <li class="tab-sfs"><a data-toggle="tab" href="#tab2" id="btn_tab2"></a></li>
                         <li class="tab-sfs"><a data-toggle="tab" href="#tab3" id="btn_tab3"></a></li>
+                        <li class="tab-sfs"><a data-toggle="tab" href="#tab4" id="btn_tab4"></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
@@ -110,7 +111,7 @@
                                     <thead>
                                     <tr>
                                         <td>
-                                            <label id="operational_system"></label>
+                                            <label class="operational_system"></label>
                                         </td>
                                         <td align="center">
                                             <label class="downloads"></label>
@@ -150,6 +151,44 @@
                                             </td>
                                             <td align="center">
                                                 {{country[1]}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab4">
+                            <div class="content-tab-sfs">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>
+                                                <label class="countries"></label>
+                                            </td>
+                                            <td align="left">
+                                                <label class="operational_system"></label>
+                                            </td>
+                                            <td align="right">
+                                                <label class="downloads"></label>
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="(key01, val01) in stats.oses_by_country">
+                                            <td>
+                                                {{key01}}
+                                            </td>
+                                            <td colspan="2">
+                                                <table ng-init="oses = val01">
+                                                    <tr ng-repeat="(key02, val02) in oses">
+                                                        <td align="left">
+                                                            {{key02}}
+                                                        </td>
+                                                        <td align="right">
+                                                            {{val02}}
+                                                        </td>    
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
                                     </tbody>

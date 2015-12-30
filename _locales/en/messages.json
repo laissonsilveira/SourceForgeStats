@@ -50,6 +50,9 @@
 	"btn_top_i18n": {
 		"message": "Top"
 	},
+	"btn_os_by_country_i18n": {
+		"message": "OS by Country"
+	},
 	"msg_error_load_json_i18n": {
 		"message": "ERROR: Could not load stats of Source Forge, verify your connection or your Project Name!"
 	},

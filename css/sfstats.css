@@ -4,6 +4,14 @@ body {
     padding-top: 60px !important;
 }
 
+table {
+    width: 100% !important;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
 .popup {
     width: 500px;
     max-height: 570px;
@@ -14,7 +22,7 @@ body {
 }
 
 .tab-sfs {
-    width: 144.6px;
+    width: 108px;
 }
 
 .navbar-title {
