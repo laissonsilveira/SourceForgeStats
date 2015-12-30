@@ -1,86 +1,86 @@
 {
 	"txt_project_name_i18n": {
-		"message": "Project"
+		"message": "Projeto"
 	},
 	"txt_placeholder_project_name_i18n": {
-		"message": "Project Name..."
+		"message": "Nome do Projeto..."
 	},
 	"txt_start_date_i18n": {
-		"message": "Start Date"
+		"message": "Data de Início"
 	},
 	"txt_end_date_i18n": {
-		"message": "End Date"
+		"message": "Data de Fim"
 	},
 	"txt_download_i18n": {
 		"message": "Downloads"
 	},
 	"txt_operational_system_i18n": {
-		"message": "Operational System"
+		"message": "Sistema Operacional"
 	},
 	"txt_countries_i18n": {
-		"message": "Countries"
+		"message": "Países"
 	},
 	"txt_top_country_i18n": {
-		"message": "TOP COUNTRY"
+		"message": "TOP PAÍS"
 	},
 	"txt_top_os_i18n": {
 		"message": "TOP OS"
 	},
 	"txt_percent_download_i18n": {
-		"message": "% of downloaders"
+		"message": "% de download"
 	},
 	"txt_legend_chart_i18n": {
-		"message": "Downloads/Days"
+		"message": "Downloads/Dias"
 	},
 	"txt_today_i18n": {
-		"message": "Today"
+		"message": "Hoje"
 	},
 	"txt_seven_days_i18n": {
-		"message": "Last 7 days"
+		"message": "Últimos 7 dias"
 	},
 	"txt_month_i18n": {
-		"message": "Month to date"
+		"message": "Este mês"
 	},
 	"txt_year_i18n": {
-		"message": "Year to date"
+		"message": "Este ano"
 	},
 	"txt_previous_month_i18n": {
-		"message": "A month ago"
+		"message": "Um mês atrás"
 	},
 	"btn_find_stats_i18n": {
-		"message": "Find Stats"
+		"message": "Procurar Estatísticas"
 	},
 	"btn_details_i18n": {
-		"message": "Details"
+		"message": "Detalhes"
 	},
 	"btn_new_filter_i18n": {
-		"message": "New Filter"
+		"message": "Novo Filtro"
 	},
 	"btn_os_i18n": {
 		"message": "OS"
 	},
 	"btn_country_i18n": {
-		"message": "Country"
+		"message": "País"
 	},
 	"btn_top_i18n": {
 		"message": "Top"
 	},
 	"btn_os_by_country_i18n": {
-		"message": "OS by Country"
+		"message": "OS por País"
 	},
 	"msg_error_load_json_i18n": {
-		"message": "ERROR: Could not load stats of Source Forge, verify your connection or your Project Name!"
+		"message": "ERRO: Não foi possível carregar as estatísticas do Source Forge, verifique sua conexão ou o Nome do Projeto!"
 	},
 	"msg_required_project_name_i18n": {
-		"message": "Project Name is required!"
+		"message": "Nome do Projeto é obrigatório!"
 	},
 	"msg_required_start_date_i18n": {
-		"message": "Start Date is required!"
+		"message": "Data de Início é obrigatório!"
 	},
 	"msg_required_end_date_i18n": {
-		"message": "End Date is required!"
+		"message": "Data de Fim é obrigatório!"
 	},
 	"msg_start_greater_end_i18n": {
-		"message": "Start Date can not be greater than the End Date!"
+		"message": "Data de Início não pode ser maior que a Data de Fim!"
 	}
 }

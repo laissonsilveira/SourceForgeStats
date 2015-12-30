@@ -116,6 +116,11 @@ function setLabel() {
     $('.name-project input').prop('placeholder', chrome.i18n.getMessage('txt_placeholder_project_name_i18n'));
     $('.start-date label').text(chrome.i18n.getMessage('txt_start_date_i18n'));
     $('.end-date label').text(chrome.i18n.getMessage('txt_end_date_i18n'));
+    $('#today').prop('label', chrome.i18n.getMessage('txt_today_i18n'));
+    $('#seven_days').prop('label', chrome.i18n.getMessage('txt_seven_days_i18n'));
+    $('#month').prop('label', chrome.i18n.getMessage('txt_month_i18n'));
+    $('#year').prop('label', chrome.i18n.getMessage('txt_year_i18n'));
+    $('#previous_month').prop('label', chrome.i18n.getMessage('txt_previous_month_i18n'));
     $('.downloads').text(chrome.i18n.getMessage('txt_download_i18n'));
     $('.operational_system').text(chrome.i18n.getMessage('txt_operational_system_i18n'));
     $('.countries').text(chrome.i18n.getMessage('txt_countries_i18n'));
