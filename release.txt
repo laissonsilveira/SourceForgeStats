@@ -1,3 +1,7 @@
+Version 1.3 (30 Dez 2015)
+    - Add OS by Country
+    - Translate to portuguese
+
 Version 1.2 (25 Dez 2015)
     - Changed sampling of y-axis to only integers
 
