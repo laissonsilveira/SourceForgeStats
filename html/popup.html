@@ -37,11 +37,11 @@
             <div ng-show="showForm">
                 <div class="form-group name-project">
                     <label></label>
-                    <input type="text" class="form-control" ng-model="filter.name_project">
+                    <input type="text" class="form-control" ng-model="filter.nameProject">
                 </div>
                 <div class="form-group start-date">
                     <label></label>
-                    <input type="date" class="form-control" ng-model="filter.start_date" list="dates">
+                    <input type="date" class="form-control" ng-model="filter.startDate" list="dates">
                     <datalist id="dates">
                         <option id="today"></option>
                         <option id="seven_days"></option>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group end-date">
                     <label></label>
-                    <input type="date" class="form-control" ng-model="filter.end_date">
+                    <input type="date" class="form-control" ng-model="filter.endDate">
                 </div>
                 <button id="btn_find" class="btn btn-primary btn-sm btn-block" ng-click="validateForm()"></button>
                 <hr>
