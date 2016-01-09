@@ -15,7 +15,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
 
         $scope.error = null;
 
-        if ($scope.filter.end_date == null) {
+        if ($scope.filter.end_date === null) {
             $('.end-date').addClass('has-error has-feedback');
             $('.end-date input').focus();
             $scope.error = {
@@ -25,7 +25,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             $('.end-date').removeClass('has-error has-feedback');
         }
 
-        if ($scope.filter.start_date == null) {
+        if ($scope.filter.start_date === null) {
             $('.start-date').addClass('has-error has-feedback');
             $('.start-date input').focus();
             $scope.error = {
@@ -35,7 +35,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             $('.start-date').removeClass('has-error has-feedback');
         }
 
-        if ($scope.filter.name_project == null || $scope.filter.name_project == '') {
+        if ($scope.filter.name_project === null || $scope.filter.name_project == '') {
             $('.name-project').addClass('has-error has-feedback');
             $('.name-project input').focus();
             $scope.error = {
@@ -45,7 +45,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             $('.name-project').removeClass('has-error has-feedback');
         }
 
-        if ($scope.error == null) {
+        if ($scope.error === null) {
             var total = dateDiffInDays($scope.filter.start_date, $scope.filter.end_date);
             if (total < 0) {
                 $scope.error = {
@@ -81,7 +81,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
                 msg: chrome.i18n.getMessage('msg_error_load_json_i18n')
             };
         });
-    };
+    }
 
     function setDefaultValues() {
         $scope.stats = null;
@@ -90,14 +90,14 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
         $scope.showChartDownloads = false;
         $scope.showDatails = false;
         $scope.showForm = true;
-    };
+    }
 
     function dateDiffInDays(a, b) {
         var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
         var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
         return Math.floor((utc2 - utc1) / ( 1000 * 60 * 60 * 24));
-    };
+    }
 
 });
 
