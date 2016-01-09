@@ -35,7 +35,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             $('.start-date').removeClass('has-error has-feedback');
         }
 
-        if ($scope.filter.name_project === null || $scope.filter.name_project == '') {
+        if ($scope.filter.name_project === null || $scope.filter.name_project === '') {
             $('.name-project').addClass('has-error has-feedback');
             $('.name-project input').focus();
             $scope.error = {
