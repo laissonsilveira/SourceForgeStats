@@ -1,3 +1,6 @@
+Version 1.4 (10 Jan 2016)
+    - Improvements to the code
+
 Version 1.3 (30 Dez 2015)
     - Add OS by Country
     - Translate to portuguese
