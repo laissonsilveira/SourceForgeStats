@@ -37,7 +37,11 @@
             <div ng-show="showForm">
                 <div class="form-group name-project">
                     <label></label>
-                    <input type="text" class="form-control" ng-model="filter.nameProject">
+                    <input type="text" class="form-control" ng-model="filter.nameProject" list="projects">
+                    <datalist id="projects">
+                        <option ng-repeat="project in projects" value="{{project}}"></option>
+                    </datalist>
+                    <!-- <span class="input-group-addon btn btn-danger btn-sm">Remove</span> -->
                 </div>
                 <div class="form-group start-date">
                     <label></label>
