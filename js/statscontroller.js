@@ -24,64 +24,64 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
     function createSpinner() {
         var opts = {
             lines: 13, length: 20, width: 10, radius: 30, corners: 1, rotate: 0,
-            direction: 1, color: '#000', speed: 1, trail: 60, shadow: false, hwaccel: false,
-            className: 'spinner', zIndex: 2e9, top: '87%', left: '36%', scale: 0.2
+            direction: 1, color: "#000", speed: 1, trail: 60, shadow: false, hwaccel: false,
+            className: "spinner", zIndex: 2e9, top: "87%", left: "36%", scale: 0.2
         };
-        new Spinner(opts).spin($('#spinner')[0]);
+        new Spinner(opts).spin($("#spinner")[0]);
     }
 
     function setLabel() {
-        $('#version').text('v' + chrome.runtime.getManifest().version);
-        $('.name-project label').text(chrome.i18n.getMessage('txt_project_name_i18n'));
-        $('.name-project input').prop('placeholder', chrome.i18n.getMessage('txt_placeholder_project_name_i18n'));
-        $('.start-date label').text(chrome.i18n.getMessage('txt_start_date_i18n'));
-        $('.end-date label').text(chrome.i18n.getMessage('txt_end_date_i18n'));
-        $('#today').prop('label', chrome.i18n.getMessage('txt_today_i18n'));
-        $('#seven_days').prop('label', chrome.i18n.getMessage('txt_seven_days_i18n'));
-        $('#month').prop('label', chrome.i18n.getMessage('txt_month_i18n'));
-        $('#year').prop('label', chrome.i18n.getMessage('txt_year_i18n'));
-        $('#previous_month').prop('label', chrome.i18n.getMessage('txt_previous_month_i18n'));
-        $('.downloads').text(chrome.i18n.getMessage('txt_download_i18n'));
-        $('.operational_system').text(chrome.i18n.getMessage('txt_operational_system_i18n'));
-        $('.countries').text(chrome.i18n.getMessage('txt_countries_i18n'));
-        $('#top_country').text(chrome.i18n.getMessage('txt_top_country_i18n'));
-        $('#top_os').text(chrome.i18n.getMessage('txt_top_os_i18n'));
-        $('.percent').text(chrome.i18n.getMessage('txt_percent_download_i18n'));
-        $('#btn_find').text(chrome.i18n.getMessage('btn_find_stats_i18n'));
-        $('#btn_details').text(chrome.i18n.getMessage('btn_details_i18n'));
-        $('#btn_new_filter').text(chrome.i18n.getMessage('btn_new_filter_i18n'));
-        $('#btn_tab1').text(chrome.i18n.getMessage('btn_top_i18n'));
-        $('#btn_tab2').text(chrome.i18n.getMessage('btn_os_i18n'));
-        $('#btn_tab3').text(chrome.i18n.getMessage('btn_country_i18n'));
-        $('#btn_tab4').text(chrome.i18n.getMessage('btn_os_by_country_i18n'));
+        $("#version").text("v" + chrome.runtime.getManifest().version);
+        $(".name-project label").text(chrome.i18n.getMessage("txt_project_name_i18n"));
+        $(".name-project input").prop("placeholder", chrome.i18n.getMessage("txt_placeholder_project_name_i18n"));
+        $(".start-date label").text(chrome.i18n.getMessage("txt_start_date_i18n"));
+        $(".end-date label").text(chrome.i18n.getMessage("txt_end_date_i18n"));
+        $("#today").prop("label", chrome.i18n.getMessage("txt_today_i18n"));
+        $("#seven_days").prop("label", chrome.i18n.getMessage("txt_seven_days_i18n"));
+        $("#month").prop("label", chrome.i18n.getMessage("txt_month_i18n"));
+        $("#year").prop("label", chrome.i18n.getMessage("txt_year_i18n"));
+        $("#previous_month").prop("label", chrome.i18n.getMessage("txt_previous_month_i18n"));
+        $(".downloads").text(chrome.i18n.getMessage("txt_download_i18n"));
+        $(".operational_system").text(chrome.i18n.getMessage("txt_operational_system_i18n"));
+        $(".countries").text(chrome.i18n.getMessage("txt_countries_i18n"));
+        $("#top_country").text(chrome.i18n.getMessage("txt_top_country_i18n"));
+        $("#top_os").text(chrome.i18n.getMessage("txt_top_os_i18n"));
+        $(".percent").text(chrome.i18n.getMessage("txt_percent_download_i18n"));
+        $("#btn_find").text(chrome.i18n.getMessage("btn_find_stats_i18n"));
+        $("#btn_details").text(chrome.i18n.getMessage("btn_details_i18n"));
+        $("#btn_new_filter").text(chrome.i18n.getMessage("btn_new_filter_i18n"));
+        $("#btn_tab1").text(chrome.i18n.getMessage("btn_top_i18n"));
+        $("#btn_tab2").text(chrome.i18n.getMessage("btn_os_i18n"));
+        $("#btn_tab3").text(chrome.i18n.getMessage("btn_country_i18n"));
+        $("#btn_tab4").text(chrome.i18n.getMessage("btn_os_by_country_i18n"));
     }
 
     function setListDates() {
         var today = new Date();
-        $('#today').val(convertDate(today));
+        $("#today").val(convertDate(today));
 
         var sevenDays = new Date();
         sevenDays.setDate(today.getDate() - 7);
-        $('#seven_days').val(convertDate(sevenDays));
+        $("#seven_days").val(convertDate(sevenDays));
 
         var month = new Date(today.getFullYear(), today.getMonth(), 1);
-        $('#month').val(convertDate(month));
+        $("#month").val(convertDate(month));
 
         var year = new Date(today.getFullYear(), 0, 1);
-        $('#year').val(convertDate(year));
+        $("#year").val(convertDate(year));
 
         var previousMonth = new Date();
         previousMonth.setMonth(today.getMonth() - 1);
-        $('#previous_month').val(convertDate(previousMonth));
+        $("#previous_month").val(convertDate(previousMonth));
     }
 
     function convertDate(d) {
-        function normalize(s) { return (s < 10) ? '0' + s : s; }
-        return [d.getFullYear(), normalize(d.getMonth() + 1), normalize(d.getDate())].join('-');
+        function normalize(s) { return (s < 10) ? "0" + s : s; }
+        return [d.getFullYear(), normalize(d.getMonth() + 1), normalize(d.getDate())].join("-");
     }
 
     function loadChart(stats) {
-        var dateChart = ['x'], downloadsChart = [chrome.i18n.getMessage('txt_legend_chart_i18n')];
+        var dateChart = ["x"], downloadsChart = [chrome.i18n.getMessage("txt_legend_chart_i18n")];
 
         for (var i = 0; i < stats.downloads.length; i++) {
             var dateLegend = new Date(stats.downloads[i][0]);
@@ -90,9 +90,9 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
         }
 
         var chartDownloads = c3.generate({
-            bindto: '#chartDownloads',
+            bindto: "#chartDownloads",
             data: {
-                x: 'x',
+                x: "x",
                 columns: [
                     dateChart,
                     downloadsChart
@@ -100,28 +100,28 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             },
             axis: {
                 x: {
-                    type: 'timeseries',
+                    type: "timeseries",
                     tick: {
-                        format: '%Y-%m-%d'
+                        format: "%Y-%m-%d"
                     }
                 },
                 y: {
                     tick: {
-                        format: d3.format('d')
+                        format: d3.format("d")
                     }
                 }
             }
         });
 
         var chartTopOS = c3.generate({
-            bindto: '#chartTopOS',
+            bindto: "#chartTopOS",
             size: {
                 width: 180,
                 height: 180
             },
             data: {
                 columns: stats.oses,
-                type : 'pie'
+                type : "pie"
             },
             legend: {
                 hide: true
@@ -129,14 +129,14 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
         });
 
         var chartTopCountry = c3.generate({
-            bindto: '#chartTopCountry',
+            bindto: "#chartTopCountry",
             size: {
                 width: 180,
                 height: 180
             },
             data: {
                 columns: stats.countries,
-                type : 'pie'
+                type : "pie"
             },
             legend: {
                 hide: true
@@ -162,8 +162,8 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
 
     function findStats() {
 
-        var linkJson = 'http://sourceforge.net/projects/' + $scope.filter.nameProject + '/files/stats/json?start_date='
-            + $filter('date')($scope.filter.startDate, 'yyyy-MM-dd') + '&end_date=' + $filter('date')($scope.filter.endDate, 'yyyy-MM-dd');
+        var linkJson = "http://sourceforge.net/projects/" + $scope.filter.nameProject + "/files/stats/json?start_date="
+            + $filter("date")($scope.filter.startDate, "yyyy-MM-dd") + "&end_date=" + $filter("date")($scope.filter.endDate, "yyyy-MM-dd");
 
         setDefaultValues();
         createSpinner();
@@ -188,7 +188,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             $scope.showSpinner = false;
             setDefaultValues();
             $scope.error = {
-                msg: chrome.i18n.getMessage('msg_error_load_json_i18n')
+                msg: chrome.i18n.getMessage("msg_error_load_json_i18n")
             };
         });
     }
@@ -208,16 +208,16 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
 
         $scope.error = null;
 
-        validate('.end-date', $scope.filter.endDate, chrome.i18n.getMessage('msg_required_end_date_i18n'));
-        validate('.start-date', $scope.filter.startDate, chrome.i18n.getMessage('msg_required_start_date_i18n'));
-        validate('.name-project', $scope.filter.nameProject, chrome.i18n.getMessage('msg_required_project_name_i18n'));
+        validate(".end-date", $scope.filter.endDate, chrome.i18n.getMessage("msg_required_end_date_i18n"));
+        validate(".start-date", $scope.filter.startDate, chrome.i18n.getMessage("msg_required_start_date_i18n"));
+        validate(".name-project", $scope.filter.nameProject, chrome.i18n.getMessage("msg_required_project_name_i18n"));
 
         if ($scope.error === null) {
             if (dateDiffInDays($scope.filter.startDate, $scope.filter.endDate) < 0) {
                 $scope.error = {
-                    msg: chrome.i18n.getMessage('msg_start_greater_end_i18n')
+                    msg: chrome.i18n.getMessage("msg_start_greater_end_i18n")
                 };
-                $('.start-date input').focus();
+                $(".start-date input").focus();
             } else {
                findStats();
             }
@@ -226,11 +226,11 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
 
     function validate(clazz, field, msgError) {
         
-        clazz = clazz.concat(' input')
-        $(clazz).removeClass('has-error has-feedback');
+        clazz = clazz.concat(" input");
+        $(clazz).removeClass("has-error has-feedback");
 
-        if (field === null || field === '' || field === undefined) {
-            $(clazz).addClass('has-error has-feedback');
+        if (field === null || field === "" || field === undefined) {
+            $(clazz).addClass("has-error has-feedback");
             $(clazz).focus();
             $scope.error = {
                 msg: msgError
@@ -239,7 +239,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
     }
 
     $scope.filter = {
-        nameProject: '',
+        nameProject: "",
         startDate: new Date(),
         endDate: new Date()
     };
