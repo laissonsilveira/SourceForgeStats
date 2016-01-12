@@ -2,11 +2,11 @@ var myapp = angular.module('SFStatsApp', []);
 myapp.controller('StatsController', function ($scope, $http, $filter) {
 
     function initLocalStorage() {
+        var projects = new Array();
         var savedProject = localStorage.getItem("nameProject");
-        if (savedProject == null) {
-            return;
-        } else {
-            var projects = new Array(savedProject);
+        
+        if (savedProject != null) {
+            projects = new Array(savedProject);
             localStorage.setItem("projects", JSON.stringify(projects));
             $scope.projects = projects;
         }
@@ -16,7 +16,7 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
 
         var savedProjects = localStorage.getItem("projects");
         if (savedProjects == null) {
-            var projects = new Array();
+            projects = new Array();
             localStorage.setItem("projects", JSON.stringify(projects));
         }
     }
@@ -178,9 +178,12 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             $scope.showForm = false;
 
             var projectsLS = JSON.parse(localStorage.getItem("projects"));
-            projectsLS.push($scope.filter.nameProject);
-            localStorage.setItem("projects", JSON.stringify(projectsLS));
-            $scope.projects = projectsLS;
+            if ($.inArray($scope.filter.nameProject, projectsLS) == -1) {
+                projectsLS.push($scope.filter.nameProject);
+                localStorage.setItem("projects", JSON.stringify(projectsLS));
+                $scope.projects = projectsLS;
+                $scope.changeNameProject();
+            }
         }).error(function () {
             $scope.showSpinner = false;
             setDefaultValues();
@@ -190,13 +193,16 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
         });
     }
 
-    $scope.filter = {
-        nameProject: '',
-        startDate: new Date(),
-        endDate: new Date()
-    };
+    $scope.removeProject = function () {
+        var index = $scope.projects.indexOf($scope.filter.nameProject);
+        $scope.projects.splice(index, 1);
+        $scope.changeNameProject();
+        localStorage.setItem("projects", JSON.stringify($scope.projects));
+    }
 
-    $scope.projects = JSON.parse(localStorage.getItem("projects"));
+    $scope.changeNameProject = function () {
+        $scope.isProjectValid = $.inArray($scope.filter.nameProject, $scope.projects) == -1;
+    }
     
     $scope.validateForm = function () {
 
@@ -243,6 +249,15 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
             }
         }
     };
+
+    $scope.filter = {
+        nameProject: '',
+        startDate: new Date(),
+        endDate: new Date()
+    };
+
+    $scope.projects = JSON.parse(localStorage.getItem("projects"));
+    $scope.isProjectValid = true;
 
     initLocalStorage();
     setLabel();

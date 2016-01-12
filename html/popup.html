@@ -25,9 +25,12 @@
     </a>
     <div class="container">
         <div class="navbar-header">
-            <h3 class="navbar-title"><span class="label">SourceForge Stats<span class="label" id="version"></span></span>
+            <h3>
+                <span class="label">SourceForge Stats
+                <span class="label" id="version"></span>
+                </span>
             </h3>
-            <h5 class="navbar-title"><span class="label">Technova.com.br - ©2015-2016 - Laisson R. Silveira</span></h5>
+            <h5><span class="label">Technova.com.br - ©2015-2016 - Laisson R. Silveira</span></h5>
         </div>
     </div>
 </nav>
@@ -35,13 +38,19 @@
     <div class="panel panel-primary">
         <div class="panel-body">
             <div ng-show="showForm">
-                <div class="form-group name-project">
+                <div class="name-project">
                     <label></label>
-                    <input type="text" class="form-control" ng-model="filter.nameProject" list="projects">
-                    <datalist id="projects">
-                        <option ng-repeat="project in projects" value="{{project}}"></option>
-                    </datalist>
-                    <!-- <span class="input-group-addon btn btn-danger btn-sm">Remove</span> -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="filter.nameProject" list="projects" ng-change="changeNameProject()">
+                        <datalist id="projects">
+                            <option class="optionsProjects" ng-repeat="project in projects" value="{{project}}"></option>
+                        </datalist>
+                        <span class="input-group-btn">
+                             <button class="btn btn-default" type="button" title="Remove Project of List" ng-disabled="isProjectValid" ng-click="removeProject()">
+                                 <img src="../images/remove.png"/>
+                             </button>
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group start-date">
                     <label></label>
@@ -51,7 +60,7 @@
                         <option id="seven_days"></option>
                         <option id="previous_month"></option>
                         <option id="month"></option>
-                        <option id="year"></option>                        
+                        <option id="year"></option>
                     </datalist>
                 </div>
                 <div class="form-group end-date">
@@ -72,12 +81,13 @@
                                 ng-disabled="!containsInfo || stats.total == 0">
                         </button>
                         <button id="btn_new_filter" class="btn btn-success btn-sm"
-                                ng-click="showDetails=false;showChartDownloads=false;containsInfo=false;showForm=true;" ng-show="showDetails || showChartDownloads">
+                                ng-click="showDetails=false;showChartDownloads=false;containsInfo=false;showForm=true;"
+                                ng-show="showDetails || showChartDownloads">
                         </button>
                     </div>
                 </h3>
                 <div ng-show="showChartDownloads" id="chartDownloads"></div>
-                <div ng-show="showDetails">
+                <div class="details" ng-show="showDetails">
                     <ul class="nav nav-pills">
                         <li class="active tab-sfs"><a data-toggle="tab" href="#tab1" id="btn_tab1"></a></li>
                         <li class="tab-sfs"><a data-toggle="tab" href="#tab2" id="btn_tab2"></a></li>
@@ -86,14 +96,14 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
-                             <div class="content-tab-sfs">
+                            <div class="content-tab-sfs">
                                 <div class="panel panel-default pull-left">
                                     <div class="panel-heading">
                                         <label id="top_os"></label>
                                     </div>
                                     <div class="panel-body">
-                                            <h3>{{stats.summaries.os.top}}</h3>
-                                            <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
+                                        <h3>{{stats.summaries.os.top}}</h3>
+                                        <h6>{{stats.summaries.os.percent}}<span class="percent"></span></h6>
                                         <div id="chartTopOS"></div>
                                     </div>
                                 </div>
@@ -102,8 +112,8 @@
                                         <label id="top_country"></label>
                                     </div>
                                     <div class="panel-body">
-                                            <h3>{{stats.summaries.geo.top}}</h3>
-                                            <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
+                                        <h3>{{stats.summaries.geo.top}}</h3>
+                                        <h6>{{stats.summaries.geo.percent}}<span class="percent"></span></h6>
                                         <div id="chartTopCountry"></div>
                                     </div>
                                 </div>
@@ -123,14 +133,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="os in stats.oses">
-                                            <td>
-                                                {{os[0]}}
-                                            </td>
-                                            <td align="center">
-                                                {{os[1]}}
-                                            </td>
-                                        </tr>
+                                    <tr ng-repeat="os in stats.oses">
+                                        <td>
+                                            {{os[0]}}
+                                        </td>
+                                        <td align="center">
+                                            {{os[1]}}
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -149,14 +159,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="country in stats.countries">
-                                            <td>
-                                                {{country[0]}}
-                                            </td>
-                                            <td align="center">
-                                                {{country[1]}}
-                                            </td>
-                                        </tr>
+                                    <tr ng-repeat="country in stats.countries">
+                                        <td>
+                                            {{country[0]}}
+                                        </td>
+                                        <td align="center">
+                                            {{country[1]}}
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -165,36 +175,36 @@
                             <div class="content-tab-sfs">
                                 <table class="table table-hover">
                                     <thead>
-                                        <tr>
-                                            <td>
-                                                <label class="countries"></label>
-                                            </td>
-                                            <td align="left">
-                                                <label class="operational_system"></label>
-                                            </td>
-                                            <td align="right">
-                                                <label class="downloads"></label>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="countries"></label>
+                                        </td>
+                                        <td align="left">
+                                            <label class="operational_system"></label>
+                                        </td>
+                                        <td align="right">
+                                            <label class="downloads"></label>
+                                        </td>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="(key01, val01) in stats.oses_by_country">
-                                            <td>
-                                                {{key01}}
-                                            </td>
-                                            <td colspan="2">
-                                                <table ng-init="oses = val01">
-                                                    <tr ng-repeat="(key02, val02) in oses">
-                                                        <td align="left">
-                                                            {{key02}}
-                                                        </td>
-                                                        <td align="right">
-                                                            {{val02}}
-                                                        </td>    
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
+                                    <tr ng-repeat="(key01, val01) in stats.oses_by_country">
+                                        <td>
+                                            {{key01}}
+                                        </td>
+                                        <td colspan="2">
+                                            <table ng-init="oses = val01">
+                                                <tr ng-repeat="(key02, val02) in oses">
+                                                    <td align="left">
+                                                        {{key02}}
+                                                    </td>
+                                                    <td align="right">
+                                                        {{val02}}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
