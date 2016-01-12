@@ -193,6 +193,20 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
         });
     }
 
+    function validate(clazz, field, msgError) {
+
+        clazz = clazz.concat(" input");
+        $(clazz).removeClass("has-error has-feedback");
+
+        if (field === null || field === "" || field === undefined) {
+            $(clazz).addClass("has-error has-feedback");
+            $(clazz).focus();
+            $scope.error = {
+                msg: msgError
+            };
+        }
+    }
+
     $scope.removeProject = function () {
         var index = $scope.projects.indexOf($scope.filter.nameProject);
         $scope.projects.splice(index, 1);
@@ -223,20 +237,6 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             }
         }
     };
-
-    function validate(clazz, field, msgError) {
-        
-        clazz = clazz.concat(" input");
-        $(clazz).removeClass("has-error has-feedback");
-
-        if (field === null || field === "" || field === undefined) {
-            $(clazz).addClass("has-error has-feedback");
-            $(clazz).focus();
-            $scope.error = {
-                msg: msgError
-            };
-        }
-    }
 
     $scope.filter = {
         nameProject: "",
