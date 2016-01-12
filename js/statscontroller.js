@@ -1,5 +1,5 @@
-var myapp = angular.module('SFStatsApp', []);
-myapp.controller('StatsController', function ($scope, $http, $filter) {
+var myapp = angular.module("SFStatsApp", []);
+myapp.controller("StatsController", function ($scope, $http, $filter) {
 
     function initLocalStorage() {
         var projects = new Array();
@@ -198,57 +198,45 @@ myapp.controller('StatsController', function ($scope, $http, $filter) {
         $scope.projects.splice(index, 1);
         $scope.changeNameProject();
         localStorage.setItem("projects", JSON.stringify($scope.projects));
-    }
+    };
 
     $scope.changeNameProject = function () {
         $scope.isProjectValid = $.inArray($scope.filter.nameProject, $scope.projects) == -1;
-    }
+    };
     
     $scope.validateForm = function () {
 
         $scope.error = null;
 
-        if ($scope.filter.endDate === null) {
-            $('.end-date').addClass('has-error has-feedback');
-            $('.end-date input').focus();
-            $scope.error = {
-                msg: chrome.i18n.getMessage('msg_required_end_date_i18n')
-            };
-        } else {
-            $('.end-date').removeClass('has-error has-feedback');
-        }
-
-        if ($scope.filter.startDate === null) {
-            $('.start-date').addClass('has-error has-feedback');
-            $('.start-date input').focus();
-            $scope.error = {
-                msg: chrome.i18n.getMessage('msg_required_start_date_i18n')
-            };
-        } else {
-            $('.start-date').removeClass('has-error has-feedback');
-        }
-
-        if ($scope.filter.nameProject === null || $scope.filter.nameProject === '' || $scope.filter.nameProject === undefined) {
-            $('.name-project').addClass('has-error has-feedback');
-            $('.name-project input').focus();
-            $scope.error = {
-                msg: chrome.i18n.getMessage('msg_required_project_name_i18n')
-            };
-        } else {
-            $('.name-project').removeClass('has-error has-feedback');
-        }
+        validate('.end-date', $scope.filter.endDate, chrome.i18n.getMessage('msg_required_end_date_i18n'));
+        validate('.start-date', $scope.filter.startDate, chrome.i18n.getMessage('msg_required_start_date_i18n'));
+        validate('.name-project', $scope.filter.nameProject, chrome.i18n.getMessage('msg_required_project_name_i18n'));
 
         if ($scope.error === null) {
-            var total = dateDiffInDays($scope.filter.startDate, $scope.filter.endDate);
-            if (total < 0) {
+            if (dateDiffInDays($scope.filter.startDate, $scope.filter.endDate) < 0) {
                 $scope.error = {
                     msg: chrome.i18n.getMessage('msg_start_greater_end_i18n')
                 };
+                $('.start-date input').focus();
             } else {
                findStats();
             }
         }
     };
+
+    function validate(clazz, field, msgError) {
+        
+        clazz = clazz.concat(' input')
+        $(clazz).removeClass('has-error has-feedback');
+
+        if (field === null || field === '' || field === undefined) {
+            $(clazz).addClass('has-error has-feedback');
+            $(clazz).focus();
+            $scope.error = {
+                msg: msgError
+            };
+        }
+    }
 
     $scope.filter = {
         nameProject: '',
