@@ -46,7 +46,7 @@
                             <option class="optionsProjects" ng-repeat="project in projects" value="{{project}}"></option>
                         </datalist>
                         <span class="input-group-btn">
-                             <button class="btn btn-default" type="button" title="Remove Project of List" ng-disabled="isProjectValid" ng-click="removeProject()">
+                             <button class="btn btn-default" type="button" ng-disabled="isProjectValid" ng-click="removeProject()">
                                  <img src="../images/remove.png"/>
                              </button>
                         </span>

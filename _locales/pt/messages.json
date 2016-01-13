@@ -47,6 +47,9 @@
 	"txt_previous_month_i18n": {
 		"message": "Um mês atrás"
 	},
+    "btn_remove_project_i18n": {
+      "message": "Deletar projeto"
+    },
 	"btn_find_stats_i18n": {
 		"message": "Procurar Estatísticas"
 	},

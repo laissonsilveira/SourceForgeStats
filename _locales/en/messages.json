@@ -47,6 +47,9 @@
 	"txt_previous_month_i18n": {
 		"message": "A month ago"
 	},
+    "btn_remove_project_i18n": {
+      "message": "Remove Project"
+    },
 	"btn_find_stats_i18n": {
 		"message": "Find Stats"
 	},

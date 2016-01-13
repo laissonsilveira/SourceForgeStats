@@ -34,6 +34,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
         $("#version").text("v" + chrome.runtime.getManifest().version);
         $(".name-project label").text(chrome.i18n.getMessage("txt_project_name_i18n"));
         $(".name-project input").prop("placeholder", chrome.i18n.getMessage("txt_placeholder_project_name_i18n"));
+        $(".name-project button").prop("title", chrome.i18n.getMessage("btn_remove_project_i18n"));
         $(".start-date label").text(chrome.i18n.getMessage("txt_start_date_i18n"));
         $(".end-date label").text(chrome.i18n.getMessage("txt_end_date_i18n"));
         $("#today").prop("label", chrome.i18n.getMessage("txt_today_i18n"));
