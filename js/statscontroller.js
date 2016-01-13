@@ -56,6 +56,11 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
         $("#btn_tab4").text(chrome.i18n.getMessage("btn_os_by_country_i18n"));
     }
 
+    function convertDate(d) {
+        function normalize(s) { return (s < 10) ? "0" + s : s; }
+        return [d.getFullYear(), normalize(d.getMonth() + 1), normalize(d.getDate())].join("-");
+    }
+
     function setListDates() {
         var today = new Date();
         $("#today").val(convertDate(today));
@@ -75,11 +80,6 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
         $("#previous_month").val(convertDate(previousMonth));
     }
 
-    function convertDate(d) {
-        function normalize(s) { return (s < 10) ? "0" + s : s; }
-        return [d.getFullYear(), normalize(d.getMonth() + 1), normalize(d.getDate())].join("-");
-    }
-
     function loadChart(stats) {
         var dateChart = ["x"], downloadsChart = [chrome.i18n.getMessage("txt_legend_chart_i18n")];
 
@@ -89,7 +89,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             downloadsChart.push(stats.downloads[i][1]);
         }
 
-        var chartDownloads = c3.generate({
+        c3.generate({
             bindto: "#chartDownloads",
             data: {
                 x: "x",
@@ -113,7 +113,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             }
         });
 
-        var chartTopOS = c3.generate({
+        c3.generate({
             bindto: "#chartTopOS",
             size: {
                 width: 180,
@@ -128,7 +128,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             }
         });
 
-        var chartTopCountry = c3.generate({
+        c3.generate({
             bindto: "#chartTopCountry",
             size: {
                 width: 180,
@@ -178,11 +178,11 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
             $scope.showForm = false;
 
             var projectsLS = JSON.parse(localStorage.getItem("projects"));
-            if ($.inArray($scope.filter.nameProject, projectsLS) == -1) {
+            if ($.inArray($scope.filter.nameProject, projectsLS) === -1) {
                 projectsLS.push($scope.filter.nameProject);
                 localStorage.setItem("projects", JSON.stringify(projectsLS));
                 $scope.projects = projectsLS;
-                $scope.changeNameProject();
+                $scope.onChangeNameProject();
             }
         }).error(function () {
             $scope.showSpinner = false;
@@ -196,11 +196,12 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
     function validate(clazz, field, msgError) {
 
         clazz = clazz.concat(" input");
-        $(clazz).removeClass("has-error has-feedback");
+        var el = $(clazz);
+        el.removeClass("has-error has-feedback");
 
         if (field === null || field === "" || field === undefined) {
-            $(clazz).addClass("has-error has-feedback");
-            $(clazz).focus();
+            el.addClass("has-error has-feedback");
+            el.focus();
             $scope.error = {
                 msg: msgError
             };
@@ -210,12 +211,14 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
     $scope.removeProject = function () {
         var index = $scope.projects.indexOf($scope.filter.nameProject);
         $scope.projects.splice(index, 1);
-        $scope.changeNameProject();
+        $scope.onChangeNameProject();
         localStorage.setItem("projects", JSON.stringify($scope.projects));
+        $scope.filter.nameProject = "";
+        $(".name-project input").focus();
     };
 
-    $scope.changeNameProject = function () {
-        $scope.isProjectValid = $.inArray($scope.filter.nameProject, $scope.projects) == -1;
+    $scope.onChangeNameProject = function () {
+        $scope.isProjectValid = $.inArray($scope.filter.nameProject, $scope.projects) === -1;
     };
     
     $scope.validateForm = function () {

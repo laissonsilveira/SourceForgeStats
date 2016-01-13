@@ -41,7 +41,7 @@
                 <div class="name-project">
                     <label></label>
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="filter.nameProject" list="projects" ng-change="changeNameProject()">
+                        <input type="text" class="form-control" ng-model="filter.nameProject" list="projects" ng-change="onChangeNameProject()">
                         <datalist id="projects">
                             <option class="optionsProjects" ng-repeat="project in projects" value="{{project}}"></option>
                         </datalist>
