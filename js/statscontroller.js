@@ -163,7 +163,7 @@ myapp.controller("StatsController", function ($scope, $http, $filter) {
 
     function findStats() {
 
-        var linkJson = "http://sourceforge.net/projects/" + $scope.filter.nameProject + "/files/stats/json?start_date="
+        var linkJson = "https://sourceforge.net/projects/" + $scope.filter.nameProject + "/files/stats/json?start_date="
             + $filter("date")($scope.filter.startDate, "yyyy-MM-dd") + "&end_date=" + $filter("date")($scope.filter.endDate, "yyyy-MM-dd");
 
         setDefaultValues();

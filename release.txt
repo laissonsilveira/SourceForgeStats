@@ -1,3 +1,6 @@
+Version 1.5.1 (10 Fev 2016)
+    - Fixed bug (No 'Access-Control-Allow-Origin' header is present on the requested resource)
+
 Version 1.5 (13 Jan 2016)
     - Code Review
     - New feature: have more of a saved project, displayed in a list in the 'Project Name' field
